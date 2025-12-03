@@ -79,7 +79,7 @@ export const DoctorDashboard: React.FC = () => {
       {/* Top Stats Row */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
          {/* Total Appointments */}
-         <div className="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-100 dark:border-slate-700 shadow-sm relative overflow-hidden group hover:border-primary-200 transition-all">
+         <div className="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-100 dark:border-slate-700 shadow-sm relative overflow-hidden group hover:border-primary-200 transition-all min-w-0">
             <div className="flex justify-between items-start mb-4">
                <div>
                   <p className="text-slate-500 dark:text-slate-400 text-sm">Total Appointments</p>
@@ -102,7 +102,7 @@ export const DoctorDashboard: React.FC = () => {
          </div>
 
          {/* Online Consultations */}
-         <div className="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-100 dark:border-slate-700 shadow-sm relative overflow-hidden group hover:border-amber-200 transition-all">
+         <div className="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-100 dark:border-slate-700 shadow-sm relative overflow-hidden group hover:border-amber-200 transition-all min-w-0">
             <div className="flex justify-between items-start mb-4">
                <div>
                   <p className="text-slate-500 dark:text-slate-400 text-sm">Online Consultations</p>
@@ -124,7 +124,7 @@ export const DoctorDashboard: React.FC = () => {
          </div>
 
          {/* Cancelled Appointments */}
-         <div className="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-100 dark:border-slate-700 shadow-sm relative overflow-hidden group hover:border-teal-200 transition-all">
+         <div className="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-100 dark:border-slate-700 shadow-sm relative overflow-hidden group hover:border-teal-200 transition-all min-w-0">
             <div className="flex justify-between items-start mb-4">
                <div>
                   <p className="text-slate-500 dark:text-slate-400 text-sm">Cancelled Appointments</p>
@@ -148,7 +148,7 @@ export const DoctorDashboard: React.FC = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
          {/* Upcoming Appointments Card */}
-         <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700 shadow-sm p-6 flex flex-col">
+         <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700 shadow-sm p-6 flex flex-col min-w-0">
             <div className="flex justify-between items-center mb-6">
                <h3 className="font-bold text-slate-800 dark:text-white">Upcoming Appointments</h3>
                <button className="text-xs text-slate-500 border border-slate-200 dark:border-slate-600 rounded px-2 py-1 flex items-center gap-1 hover:bg-slate-50 dark:hover:bg-slate-700">
@@ -199,7 +199,7 @@ export const DoctorDashboard: React.FC = () => {
          </div>
 
          {/* Appointments Graph */}
-         <div className="lg:col-span-2 bg-white dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700 shadow-sm p-6">
+         <div className="lg:col-span-2 bg-white dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700 shadow-sm p-6 min-w-0">
             <div className="flex justify-between items-center mb-6">
                <h3 className="font-bold text-slate-800 dark:text-white">Appointments</h3>
                <button className="text-xs text-slate-500 border border-slate-200 dark:border-slate-600 rounded px-2 py-1 flex items-center gap-1 hover:bg-slate-50 dark:hover:bg-slate-700">
@@ -218,7 +218,7 @@ export const DoctorDashboard: React.FC = () => {
                </div>
             </div>
 
-            <div className="h-80 w-full">
+            <div className="h-80 w-full min-w-0">
                <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={appointmentStats} barGap={8} barSize={6}>
                      <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" strokeOpacity={0.5} />
@@ -315,7 +315,7 @@ export const DoctorDashboard: React.FC = () => {
       {/* Bottom Section: Availability, Stats, Top Patients */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
          {/* Availability */}
-         <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700 shadow-sm p-6 flex flex-col">
+         <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700 shadow-sm p-6 flex flex-col min-w-0">
             <div className="flex justify-between items-center mb-6">
                <h3 className="font-bold text-slate-800 dark:text-white">Availability</h3>
                <button className="text-xs text-slate-500 border border-slate-200 dark:border-slate-600 rounded px-2 py-1 flex items-center gap-1 hover:bg-slate-50 dark:hover:bg-slate-700">
@@ -346,7 +346,7 @@ export const DoctorDashboard: React.FC = () => {
          </div>
 
          {/* Appointment Statistics (Donut) */}
-         <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700 shadow-sm p-6 flex flex-col items-center">
+         <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700 shadow-sm p-6 flex flex-col items-center min-w-0">
             <div className="flex justify-between items-center w-full mb-2">
                <h3 className="font-bold text-slate-800 dark:text-white">Appointment Statistics</h3>
                <button className="text-xs text-slate-500 border border-slate-200 dark:border-slate-600 rounded px-2 py-1 flex items-center gap-1 hover:bg-slate-50 dark:hover:bg-slate-700">
@@ -392,7 +392,7 @@ export const DoctorDashboard: React.FC = () => {
          </div>
 
          {/* Top Patients */}
-         <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700 shadow-sm p-6 flex flex-col">
+         <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700 shadow-sm p-6 flex flex-col min-w-0">
             <div className="flex justify-between items-center mb-6">
                <h3 className="font-bold text-slate-800 dark:text-white">Top Patients</h3>
                <button className="text-xs text-slate-500 border border-slate-200 dark:border-slate-600 rounded px-2 py-1 flex items-center gap-1 hover:bg-slate-50 dark:hover:bg-slate-700">

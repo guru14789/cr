@@ -56,9 +56,9 @@ export const Income: React.FC = () => {
 
       {/* Charts */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-         <div className="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-100 dark:border-slate-700 shadow-sm">
+         <div className="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-100 dark:border-slate-700 shadow-sm min-w-0">
             <h3 className="font-bold text-slate-800 dark:text-white mb-6">Revenue vs Expenses</h3>
-            <div className="h-80">
+            <div className="h-80 w-full min-w-0">
                <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={monthlyData}>
                      <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" strokeOpacity={0.5} />
@@ -75,9 +75,9 @@ export const Income: React.FC = () => {
             </div>
          </div>
 
-         <div className="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-100 dark:border-slate-700 shadow-sm">
+         <div className="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-100 dark:border-slate-700 shadow-sm min-w-0">
             <h3 className="font-bold text-slate-800 dark:text-white mb-6">Profit Trend</h3>
-            <div className="h-80">
+            <div className="h-80 w-full min-w-0">
                <ResponsiveContainer width="100%" height="100%">
                   <AreaChart data={monthlyData}>
                      <defs>

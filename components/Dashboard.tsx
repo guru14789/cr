@@ -248,24 +248,24 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
               <div 
                 key={idx} 
                 onClick={() => onNavigate(stat.target)}
-                className="bg-white dark:bg-slate-800 rounded-2xl p-5 shadow-soft border border-slate-100 dark:border-slate-800 flex justify-between items-stretch cursor-pointer hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group border-t-4 hover:border-t-primary-500"
+                className="bg-white dark:bg-slate-800 rounded-2xl p-5 shadow-soft border border-slate-100 dark:border-slate-800 flex justify-between items-stretch cursor-pointer hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group border-t-4 hover:border-t-primary-500 min-w-0"
                 style={{ borderTopColor: idx === 0 ? '#0d9488' : idx === 1 ? '#0ea5e9' : idx === 2 ? '#8b5cf6' : '#10b981' }}
               >
-                  <div className="flex flex-col justify-between py-1">
+                  <div className="flex flex-col justify-between py-1 min-w-0">
                       <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${stat.bg} ${stat.color} mb-4 group-hover:scale-110 transition-transform`}>
                           <stat.icon className="w-6 h-6" />
                       </div>
                       <div>
                           <p className="text-slate-500 dark:text-slate-400 text-sm font-medium">{stat.label}</p>
-                          <h3 className="text-2xl font-bold text-slate-800 dark:text-white mt-1">{stat.value}</h3>
+                          <h3 className="text-2xl font-bold text-slate-800 dark:text-white mt-1 truncate">{stat.value}</h3>
                       </div>
                   </div>
-                  <div className="flex flex-col justify-between items-end">
+                  <div className="flex flex-col justify-between items-end min-w-0">
                       <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${stat.change.startsWith('+') ? 'bg-emerald-50 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-400' : 'bg-rose-50 text-rose-600 dark:bg-rose-900/30 dark:text-rose-400'}`}>
                           {stat.change}
                       </span>
                       <p className="text-[10px] text-slate-400 dark:text-slate-500 text-right mb-2 font-medium">{stat.period}</p>
-                      <div className="w-28 h-12 opacity-80 group-hover:opacity-100 transition-opacity">
+                      <div className="w-24 md:w-28 h-12 opacity-80 group-hover:opacity-100 transition-opacity">
                           <ResponsiveContainer width="100%" height="100%">
                               {stat.chart}
                           </ResponsiveContainer>
@@ -278,8 +278,8 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
       {/* 2. Appointment Statistics & Calendar */}
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
           {/* Left Chart */}
-          <div className="xl:col-span-2 bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-soft border border-slate-100 dark:border-slate-800">
-              <div className="flex justify-between items-center mb-8">
+          <div className="xl:col-span-2 bg-white dark:bg-slate-800 rounded-2xl p-4 md:p-6 shadow-soft border border-slate-100 dark:border-slate-800 min-w-0">
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
                   <h3 className="font-bold text-slate-800 dark:text-white text-lg">Appointment Statistics</h3>
                   <div className="flex items-center gap-2 border border-slate-200 dark:border-slate-700 rounded-lg p-1 bg-slate-50 dark:bg-slate-900">
                       <span className="text-xs font-bold px-3 py-1.5 bg-white dark:bg-slate-700 rounded-md text-slate-700 dark:text-white shadow-sm">Monthly</span>
@@ -288,27 +288,27 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
               </div>
               
               {/* Tabs */}
-              <div className="grid grid-cols-4 gap-4 mb-8">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
                   <div className="bg-primary-50 dark:bg-primary-900/20 p-4 rounded-xl text-center border border-primary-100 dark:border-primary-900/30">
                       <p className="text-xs text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wide flex items-center justify-center gap-1.5"><span className="w-2 h-2 rounded-full bg-primary"></span> All</p>
-                      <p className="text-2xl font-bold text-slate-800 dark:text-white mt-1">6,314</p>
+                      <p className="text-xl md:text-2xl font-bold text-slate-800 dark:text-white mt-1">6,314</p>
                   </div>
                   <div className="bg-rose-50 dark:bg-rose-900/20 p-4 rounded-xl text-center border border-rose-100 dark:border-rose-900/30">
                       <p className="text-xs text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wide flex items-center justify-center gap-1.5"><span className="w-2 h-2 rounded-full bg-rose-500"></span> Cancelled</p>
-                      <p className="text-2xl font-bold text-slate-800 dark:text-white mt-1">456</p>
+                      <p className="text-xl md:text-2xl font-bold text-slate-800 dark:text-white mt-1">456</p>
                   </div>
                   <div className="bg-amber-50 dark:bg-amber-900/20 p-4 rounded-xl text-center border border-amber-100 dark:border-amber-900/30">
                       <p className="text-xs text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wide flex items-center justify-center gap-1.5"><span className="w-2 h-2 rounded-full bg-amber-500"></span> Reschedule</p>
-                      <p className="text-2xl font-bold text-slate-800 dark:text-white mt-1">745</p>
+                      <p className="text-xl md:text-2xl font-bold text-slate-800 dark:text-white mt-1">745</p>
                   </div>
                   <div className="bg-emerald-50 dark:bg-emerald-900/20 p-4 rounded-xl text-center border border-emerald-100 dark:border-emerald-900/30">
                       <p className="text-xs text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wide flex items-center justify-center gap-1.5"><span className="w-2 h-2 rounded-full bg-emerald-500"></span> Completed</p>
-                      <p className="text-2xl font-bold text-slate-800 dark:text-white mt-1">4,578</p>
+                      <p className="text-xl md:text-2xl font-bold text-slate-800 dark:text-white mt-1">4,578</p>
                   </div>
               </div>
 
               {/* Bar Chart */}
-              <div className="h-[320px] w-full">
+              <div className="h-[300px] md:h-[320px] w-full min-w-0">
                   <ResponsiveContainer width="100%" height="100%">
                       <BarChart data={aptStatsData} barGap={8} barSize={8}>
                           <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" strokeOpacity={0.6} />
@@ -328,7 +328,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
           </div>
 
           {/* Right Calendar/Appointments */}
-          <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-soft border border-slate-100 dark:border-slate-800 flex flex-col">
+          <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-soft border border-slate-100 dark:border-slate-800 flex flex-col min-w-0">
               <div className="flex justify-between items-center mb-6">
                   <h3 className="font-bold text-slate-800 dark:text-white text-lg">Appointments</h3>
                   <button 
@@ -379,7 +379,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
               </div>
 
               {/* Dynamic Upcoming List */}
-              <div className="space-y-3 mb-4 flex-1 overflow-y-auto pr-1 custom-scrollbar">
+              <div className="space-y-3 mb-4 flex-1 overflow-y-auto pr-1 custom-scrollbar min-h-[150px]">
                   <div className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">
                       {selectedDate.toLocaleDateString('en-US', { day: 'numeric', month: 'long' })}
                   </div>
@@ -392,7 +392,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
                              </div>
                           </div>
                           <div className="flex-1 min-w-0">
-                              <h4 className="font-bold text-slate-800 dark:text-white text-sm group-hover:text-primary-600 transition-colors">{ev.title}</h4>
+                              <h4 className="font-bold text-slate-800 dark:text-white text-sm group-hover:text-primary-600 transition-colors truncate">{ev.title}</h4>
                               <p className="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1 mt-1 font-medium">
                                   <Clock className="w-3 h-3" /> {ev.date.split(', ')[1]}
                               </p>
@@ -407,7 +407,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
       </div>
 
       {/* 3. Popular Doctors */}
-      <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-soft border border-slate-100 dark:border-slate-800">
+      <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-soft border border-slate-100 dark:border-slate-800 min-w-0">
           <div className="flex justify-between items-center mb-6">
               <h3 className="font-bold text-slate-800 dark:text-white text-lg">Top Performing Doctors</h3>
               <button 
@@ -426,11 +426,11 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
                              ⭐ 4.9
                           </div>
                       </div>
-                      <div>
-                          <h4 className="font-bold text-slate-800 dark:text-white text-base">{doc.name}</h4>
-                          <p className="text-xs text-primary-600 dark:text-primary-400 font-medium mb-1.5 uppercase tracking-wide">{doc.specialty}</p>
+                      <div className="min-w-0 flex-1">
+                          <h4 className="font-bold text-slate-800 dark:text-white text-base truncate">{doc.name}</h4>
+                          <p className="text-primary-600 dark:text-primary-400 text-xs font-medium mb-1.5 uppercase tracking-wide truncate">{doc.specialty}</p>
                           <div className="flex items-center gap-2">
-                             <div className="h-1.5 w-16 bg-slate-200 rounded-full overflow-hidden">
+                             <div className="h-1.5 w-16 bg-slate-200 rounded-full overflow-hidden shrink-0">
                                 <div className="h-full bg-primary rounded-full" style={{width: '85%'}}></div>
                              </div>
                              <p className="text-xs font-bold text-slate-700 dark:text-slate-300">{doc.bookings} Visits</p>
@@ -444,7 +444,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
       {/* 4. Mid Section: Depts, Schedule, Income */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Top Departments */}
-          <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-soft border border-slate-100 dark:border-slate-800">
+          <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-soft border border-slate-100 dark:border-slate-800 min-w-0">
               <div className="flex justify-between items-center mb-4">
                   <h3 className="font-bold text-slate-800 dark:text-white text-lg">Department Split</h3>
                   <button onClick={() => onNavigate('departments')} className="p-1 hover:bg-slate-50 rounded-lg text-slate-400"><MoreHorizontal className="w-5 h-5" /></button>
@@ -470,7 +470,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
                       <p className="text-3xl font-extrabold text-slate-800 dark:text-white">638</p>
                   </div>
               </div>
-              <div className="flex justify-center gap-4 text-xs font-semibold text-slate-500 dark:text-slate-400 mt-2">
+              <div className="flex justify-center gap-4 text-xs font-semibold text-slate-500 dark:text-slate-400 mt-2 flex-wrap">
                   <div className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-sm bg-teal-600"></span> Cardiology</div>
                   <div className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-sm bg-sky-500"></span> Dental</div>
                   <div className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-sm bg-rose-500"></span> Neurology</div>
@@ -478,7 +478,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
           </div>
 
           {/* Doctors Schedule */}
-          <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-soft border border-slate-100 dark:border-slate-800">
+          <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-soft border border-slate-100 dark:border-slate-800 min-w-0">
               <div className="flex justify-between items-center mb-6">
                   <h3 className="font-bold text-slate-800 dark:text-white text-lg">Doctors Availability</h3>
                   <button 
@@ -518,7 +518,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
           </div>
 
           {/* Income By Treatment */}
-          <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-soft border border-slate-100 dark:border-slate-800">
+          <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-soft border border-slate-100 dark:border-slate-800 min-w-0">
                <div className="flex justify-between items-center mb-6">
                   <h3 className="font-bold text-slate-800 dark:text-white text-lg">Revenue Stream</h3>
                   <div className="bg-green-50 text-green-600 text-xs font-bold px-2 py-1 rounded-md flex items-center gap-1">
@@ -548,7 +548,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
       </div>
 
       {/* 5. All Appointments Table */}
-      <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-soft border border-slate-100 dark:border-slate-800 p-6">
+      <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-soft border border-slate-100 dark:border-slate-800 p-6 min-w-0">
           <div className="flex justify-between items-center mb-6">
               <h3 className="font-bold text-slate-800 dark:text-white text-lg">Recent Appointments</h3>
               <button 
@@ -562,9 +562,9 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
               <table className="w-full text-left border-collapse">
                   <thead>
                       <tr className="border-b border-slate-100 dark:border-slate-700 text-xs font-bold text-slate-400 uppercase tracking-wider">
-                          <th className="py-4 px-2">Doctor</th>
-                          <th className="py-4 px-2">Patient</th>
-                          <th className="py-4 px-2">Date & Time</th>
+                          <th className="py-4 px-2 min-w-[150px]">Doctor</th>
+                          <th className="py-4 px-2 min-w-[150px]">Patient</th>
+                          <th className="py-4 px-2 min-w-[120px]">Date & Time</th>
                           <th className="py-4 px-2">Mode</th>
                           <th className="py-4 px-2">Status</th>
                           <th className="py-4 px-2 text-right">Action</th>
@@ -633,7 +633,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
       {/* 6. Bottom Row */}
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
           {/* Top 5 Patients */}
-          <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-soft border border-slate-100 dark:border-slate-800">
+          <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-soft border border-slate-100 dark:border-slate-800 min-w-0">
               <div className="flex justify-between items-center mb-6">
                   <h3 className="font-bold text-slate-800 dark:text-white text-lg">Loyal Patients</h3>
                   <button className="text-xs text-slate-500 font-bold hover:text-slate-800">View All</button>
@@ -642,8 +642,8 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
                   {topPatients.map((p, idx) => (
                       <div key={idx} className="flex items-center gap-4">
                           <img src={p.img} alt="" className="w-10 h-10 rounded-full border-2 border-white shadow-sm" />
-                          <div className="flex-1">
-                              <h4 className="font-bold text-slate-800 dark:text-white text-sm">{p.name}</h4>
+                          <div className="flex-1 min-w-0">
+                              <h4 className="font-bold text-slate-800 dark:text-white text-sm truncate">{p.name}</h4>
                               <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">Paid: <span className="text-emerald-600">{p.paid}</span></p>
                           </div>
                           <span className="text-xs font-bold text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-full border border-indigo-100">{p.apps}</span>
@@ -653,7 +653,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
           </div>
 
           {/* Recent Transactions */}
-          <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-soft border border-slate-100 dark:border-slate-800">
+          <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-soft border border-slate-100 dark:border-slate-800 min-w-0">
               <div className="flex justify-between items-center mb-6">
                   <h3 className="font-bold text-slate-800 dark:text-white text-lg">Billing</h3>
                   <button onClick={() => onNavigate('transactions')} className="p-1.5 hover:bg-slate-100 rounded-lg text-slate-400"><ArrowUpRight className="w-4 h-4" /></button>
@@ -664,8 +664,8 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
                           <div className={`w-10 h-10 rounded-xl flex items-center justify-center text-white font-bold text-sm shadow-md ${t.name.includes('Purchase') ? 'bg-gradient-to-br from-violet-500 to-indigo-600' : 'bg-gradient-to-br from-teal-400 to-emerald-600'}`}>
                              {t.name.includes('Purchase') ? 'S' : 'P'}
                           </div>
-                          <div className="flex-1">
-                              <h4 className="font-bold text-slate-800 dark:text-white text-sm">{t.name}</h4>
+                          <div className="flex-1 min-w-0">
+                              <h4 className="font-bold text-slate-800 dark:text-white text-sm truncate">{t.name}</h4>
                               <p className="text-xs text-slate-400 font-medium">{t.id}</p>
                           </div>
                           <span className={`text-sm font-bold ${t.status === 'success' ? 'text-emerald-600' : 'text-rose-600'}`}>
@@ -677,7 +677,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
           </div>
 
           {/* Leave Requests */}
-          <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-soft border border-slate-100 dark:border-slate-800">
+          <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-soft border border-slate-100 dark:border-slate-800 min-w-0">
               <div className="flex justify-between items-center mb-6">
                   <div className="flex items-center gap-2">
                       <h3 className="font-bold text-slate-800 dark:text-white text-lg">Pending Leaves</h3>
