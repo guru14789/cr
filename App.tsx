@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Layout } from './components/Layout';
 import { AdminDashboard } from './components/Dashboard';
@@ -28,6 +27,7 @@ import { NewAppointment } from './components/NewAppointment';
 import { CalendarView } from './components/CalendarView';
 import { Services } from './components/Services';
 import { Assets } from './components/Assets';
+import { Messages } from './components/Messages';
 import { mockPatients, mockAppointments, mockDoctors, mockDepartments, mockStaffs } from './services/mockData';
 
 const App: React.FC = () => {
@@ -121,6 +121,8 @@ const App: React.FC = () => {
         return <Specializations />;
       case 'assets':
         return <Assets />;
+      case 'messages':
+        return <Messages />;
       case 'invoices':
         return <Invoices />;
       case 'transactions':

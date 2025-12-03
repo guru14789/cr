@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { 
   LayoutDashboard, Users, Calendar, Stethoscope, 
@@ -151,6 +150,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, activeTab, onTabChange
         { id: 'services', label: 'Services', icon: Activity },
         { id: 'specializations', label: 'Specializations', icon: Tag },
         { id: 'assets', label: 'Assets', icon: Box },
+        { id: 'messages', label: 'Messages', icon: MessageSquare },
       ]
     },
     {

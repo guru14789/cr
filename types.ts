@@ -1,5 +1,3 @@
-
-
 export enum PatientStatus {
   Active = 'Active',
   Discharged = 'Discharged',
@@ -79,6 +77,27 @@ export interface Asset {
   warrantyEnd: string;
   amount: number;
   status: 'Approved' | 'Pending' | 'Returned';
+}
+
+export interface ChatMessage {
+  id: string;
+  senderId: string;
+  text: string;
+  time: string;
+  isMe: boolean;
+  status: 'sent' | 'delivered' | 'read';
+  attachments?: string[];
+}
+
+export interface ChatContact {
+  id: string;
+  name: string;
+  role: string;
+  avatar: string;
+  status: 'Online' | 'Offline' | 'Busy';
+  lastMessage: string;
+  lastMessageTime: string;
+  unreadCount: number;
 }
 
 export interface Patient {

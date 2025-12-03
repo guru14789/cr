@@ -1,6 +1,4 @@
-
-
-import { Patient, Appointment, Lead, PatientStatus, TagType, Doctor, Campaign, PaymentMode, LeaveRequest, Department, Staff, PayrollRecord, ClinicLocation, Specialization, Transaction, Invoice, ReportItem, Service, Asset } from '../types';
+import { Patient, Appointment, Lead, PatientStatus, TagType, Doctor, Campaign, PaymentMode, LeaveRequest, Department, Staff, PayrollRecord, ClinicLocation, Specialization, Transaction, Invoice, ReportItem, Service, Asset, ChatContact, ChatMessage } from '../types';
 
 // Helper to get dates relative to today
 const getRelativeDate = (days: number) => {
@@ -13,6 +11,23 @@ const today = getRelativeDate(0);
 const tomorrow = getRelativeDate(1);
 const yesterday = getRelativeDate(-1);
 const lastWeek = getRelativeDate(-7);
+
+export const mockChatContacts: ChatContact[] = [
+  { id: '1', name: 'Mark Smith', role: 'Online', avatar: 'https://ui-avatars.com/api/?name=Mark+Smith&background=dcfce7&color=166534', status: 'Online', lastMessage: 'Perfect! That layout will work great...', lastMessageTime: '10:05 AM', unreadCount: 0 },
+  { id: '2', name: 'Eugene Sikora', role: 'Away', avatar: 'https://ui-avatars.com/api/?name=Eugene+Sikora&background=dbeafe&color=1e40af', status: 'Busy', lastMessage: 'How are your Today', lastMessageTime: '08:26 AM', unreadCount: 5 },
+  { id: '3', name: 'Robert Fassett', role: 'Offline', avatar: 'https://ui-avatars.com/api/?name=Robert+Fassett&background=fee2e2&color=991b1b', status: 'Offline', lastMessage: 'Here are some of ver...', lastMessageTime: 'yesterday', unreadCount: 5 },
+  { id: '4', name: 'Andrew Fletcher', role: 'Online', avatar: 'https://ui-avatars.com/api/?name=Andrew+Fletcher&background=ffedd5&color=9a3412', status: 'Online', lastMessage: 'Use tools like Trello...', lastMessageTime: 'yesterday', unreadCount: 0 },
+  { id: '5', name: 'Tyron Derby', role: 'Online', avatar: 'https://ui-avatars.com/api/?name=Tyron+Derby&background=f3e8ff&color=6b21a8', status: 'Online', lastMessage: "Let's reconvene next...", lastMessageTime: '12:55 PM', unreadCount: 0 },
+  { id: '6', name: 'Anna Johnson', role: 'Online', avatar: 'https://ui-avatars.com/api/?name=Anna+Johnson&background=ccfbf1&color=0f766e', status: 'Online', lastMessage: 'How are your Today', lastMessageTime: '12:54 PM', unreadCount: 0 },
+];
+
+export const mockChatMessages: ChatMessage[] = [
+  { id: 'm1', senderId: '1', text: 'Hey mark! Did you check out the new logo design?', time: '02:39 PM', isMe: false, status: 'read' },
+  { id: 'm2', senderId: 'me', text: 'Not yet. Can you send it here?', time: '02:39 PM', isMe: true, status: 'read' },
+  { id: 'm3', senderId: '1', text: 'Sure! Please check the below logo Attached!!!', time: '02:39 PM', isMe: false, status: 'read', attachments: ['logo_v1.png'] },
+  { id: 'm4', senderId: 'me', text: 'Looks clean! I like the font. Maybe try a slightly darker blue?', time: '10:00 AM', isMe: true, status: 'read' },
+  { id: 'm5', senderId: '1', text: 'Perfect! That layout will work great on the landing page. 👍', time: '10:05 AM', isMe: false, status: 'read' },
+];
 
 export const mockPatients: Patient[] = [
   { 
@@ -247,29 +262,6 @@ export const mockSpecializations: Specialization[] = [
   { id: 'SPEC-005', name: 'Dermatology', description: 'Skin, hair, and nail conditions', status: 'Inactive' },
 ];
 
-export const mockInvoicesList: Invoice[] = [
-  { id: 'INV-2025-001', date: today, amount: 1500, status: 'Paid', items: ['Consultation', 'Blood Test'], mode: 'UPI' },
-  { id: 'INV-2025-002', date: today, amount: 450, status: 'Pending', items: ['Pharmacy'], mode: 'Cash' },
-  { id: 'INV-2025-003', date: yesterday, amount: 2000, status: 'Overdue', items: ['X-Ray', 'Consultation'], mode: 'Card' },
-  { id: 'INV-2025-004', date: getRelativeDate(-2), amount: 1200, status: 'Paid', items: ['Dental Cleaning'], mode: 'Insurance' },
-  { id: 'INV-2025-005', date: getRelativeDate(-3), amount: 5000, status: 'Pending', items: ['MRI Scan'], mode: 'Card' },
-];
-
-export const mockTransactions: Transaction[] = [
-  { id: 'TRX-9871', patientName: 'Rajesh Kumar', date: today, amount: 1500, method: 'Credit Card', status: 'Completed', description: 'OPD Consultation' },
-  { id: 'TRX-9872', patientName: 'Priya Sharma', date: today, amount: 450, method: 'Cash', status: 'Completed', description: 'Medicines' },
-  { id: 'TRX-9873', patientName: 'Amit Patel', date: yesterday, amount: 2000, method: 'Insurance', status: 'Completed', description: 'Radiology Services' },
-  { id: 'TRX-9874', patientName: 'Sita Verma', date: getRelativeDate(-2), amount: 1200, method: 'Bank Transfer', status: 'Failed', description: 'Dental Procedure' },
-  { id: 'TRX-9875', patientName: 'Vikram Singh', date: getRelativeDate(-3), amount: 5000, method: 'Credit Card', status: 'Completed', description: 'Advanced Diagnostics' },
-];
-
-export const mockReports: ReportItem[] = [
-  { id: 'RPT-001', name: 'Monthly Financial Summary', category: 'Financial', generatedDate: '01 Nov 2025', format: 'PDF', size: '2.4 MB' },
-  { id: 'RPT-002', name: 'Patient Demographics Analysis', category: 'Clinical', generatedDate: '30 Oct 2025', format: 'Excel', size: '1.1 MB' },
-  { id: 'RPT-003', name: 'Staff Attendance Report', category: 'HR', generatedDate: '28 Oct 2025', format: 'CSV', size: '450 KB' },
-  { id: 'RPT-004', name: 'Inventory Usage Log', category: 'Operational', generatedDate: '25 Oct 2025', format: 'PDF', size: '3.2 MB' },
-];
-
 export const mockServices: Service[] = [
   { id: 'SRV-001', name: 'General Consultation', department: 'General Medicine', price: 200, status: 'Active' },
   { id: 'SRV-002', name: 'Dental Cleaning', department: 'Dentistry', price: 180, status: 'Inactive' },
@@ -294,4 +286,28 @@ export const mockAssets: Asset[] = [
   { id: '8', assetId: '#AST008', name: 'MediCart', user: 'Diane Nash', userImage: 'https://ui-avatars.com/api/?name=DN&background=random', purchaseDate: '12 Feb 2025', warranty: '10 Years', warrantyEnd: '12 Feb 2035', amount: 246798, status: 'Approved' },
   { id: '9', assetId: '#AST009', name: 'SterilBox', user: 'Sally Cavazos', userImage: 'https://ui-avatars.com/api/?name=SC&background=random', purchaseDate: '21 Jan 2025', warranty: '5 Years', warrantyEnd: '21 Jan 2028', amount: 12011, status: 'Approved' },
   { id: '10', assetId: '#AST010', name: 'MediLogix', user: 'Forest Heath', userImage: 'https://ui-avatars.com/api/?name=FH&background=random', purchaseDate: '15 Jan 2025', warranty: '2 Years', warrantyEnd: '15 Jan 2028', amount: 35421, status: 'Pending' },
+];
+
+export const mockInvoicesList: Invoice[] = [
+  { id: 'INV-001', date: '25 Oct 2025', amount: 450, status: 'Paid', items: ['Consultation', 'Blood Test'], mode: 'Credit Card' },
+  { id: 'INV-002', date: '24 Oct 2025', amount: 120, status: 'Pending', items: ['X-Ray'], mode: 'Insurance' },
+  { id: 'INV-003', date: '22 Oct 2025', amount: 850, status: 'Overdue', items: ['MRI Scan', 'Consultation'], mode: 'Cash' },
+  { id: 'INV-004', date: '20 Oct 2025', amount: 200, status: 'Paid', items: ['Dental Cleaning'], mode: 'Debit Card' },
+  { id: 'INV-005', date: '18 Oct 2025', amount: 1500, status: 'Paid', items: ['Surgery Advance'], mode: 'Bank Transfer' },
+];
+
+export const mockTransactions: Transaction[] = [
+  { id: 'TRX-789012', patientName: 'John Doe', date: '25 Oct 2025, 10:30 AM', amount: 450, method: 'Credit Card', status: 'Completed', description: 'Consultation Fee' },
+  { id: 'TRX-789013', patientName: 'Sarah Smith', date: '24 Oct 2025, 02:15 PM', amount: 120, method: 'Insurance', status: 'Completed', description: 'X-Ray Copay' },
+  { id: 'TRX-789014', patientName: 'Mike Johnson', date: '23 Oct 2025, 11:00 AM', amount: 850, method: 'Cash', status: 'Failed', description: 'MRI Scan' },
+  { id: 'TRX-789015', patientName: 'Emily Davis', date: '22 Oct 2025, 09:45 AM', amount: 200, method: 'Credit Card', status: 'Refunded', description: 'Overcharge Adjustment' },
+  { id: 'TRX-789016', patientName: 'Robert Wilson', date: '21 Oct 2025, 04:30 PM', amount: 1500, method: 'Bank Transfer', status: 'Completed', description: 'Surgery Advance Payment' },
+];
+
+export const mockReports: ReportItem[] = [
+  { id: 'RPT-101', name: 'Oct 2025 Financial Summary', category: 'Financial', generatedDate: '01 Nov 2025', format: 'PDF', size: '2.4 MB' },
+  { id: 'RPT-102', name: 'Q3 Patient Demographics', category: 'Clinical', generatedDate: '15 Oct 2025', format: 'Excel', size: '4.1 MB' },
+  { id: 'RPT-103', name: 'Staff Attendance Log', category: 'HR', generatedDate: '28 Oct 2025', format: 'CSV', size: '850 KB' },
+  { id: 'RPT-104', name: 'Inventory Status Report', category: 'Operational', generatedDate: '30 Oct 2025', format: 'PDF', size: '1.2 MB' },
+  { id: 'RPT-105', name: 'Department Revenue Analysis', category: 'Financial', generatedDate: '25 Oct 2025', format: 'Excel', size: '3.5 MB' },
 ];
